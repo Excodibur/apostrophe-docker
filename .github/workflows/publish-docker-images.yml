@@ -40,11 +40,19 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       # Clone apostrophe repo to local folder temporarily
-      - name: Get remote apostrophe repository
+      #- name: Get remote apostrophe repository
+      #  uses: actions/checkout@v4
+      #  with:
+      #    repository: apostrophecms/apostrophe
+      #    ref: ${{steps.vars.outputs.tag}}
+      #    path: apostrophe-source
+
+      # Clone apostrophe repo to local folder temporarily
+      - name: Get remote apostrophe starter-kit repository
         uses: actions/checkout@v4
         with:
-          repository: apostrophecms/apostrophe
-          ref: ${{steps.vars.outputs.tag}}
+          repository: apostrophecms/starter-kit-essentials
+          ref: main
           path: apostrophe-source
 
       # Copy files to cloned repo
