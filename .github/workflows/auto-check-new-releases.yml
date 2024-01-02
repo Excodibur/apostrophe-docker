@@ -14,10 +14,14 @@ on:
 jobs:
   get-version:
     runs-on: ubuntu-latest
+    
+    permissions:
+        # Give the default GITHUB_TOKEN write permission to commit and push the
+        # added or changed files to the repository.
+        contents: write
+
     steps:
       - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.PAT }}
 
       - name: Fetch release version
         id: fetch-version

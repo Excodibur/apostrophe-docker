@@ -1,16 +1,17 @@
 FROM node:lts-alpine3.15
 
-WORKDIR /srv/www/apostrophe
+WORKDIR /app
 
-RUN chown -R node: /srv/www/apostrophe
+RUN chown -R node:node /app
 USER node
 
-COPY --chown=node package*.json /srv/www/apostrophe/
+COPY --chown=node:node package*.json ./
 
-NODE_ENV=production
+ENV NODE_ENV=production
+RUN npm i
 RUN npm ci
 
-COPY --chown=node . /srv/www/apostrophe/
+COPY --chown=node . ./
 
 RUN ./scripts/build-assets.sh
 
