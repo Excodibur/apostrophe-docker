@@ -51,7 +51,7 @@ jobs:
       - name: Get remote apostrophe starter-kit repository
         uses: actions/checkout@v4
         with:
-          repository: apostrophecms/starter-kit-essentials
+          repository: apostrophecms/starter-kit-hospitality
           ref: main
           path: apostrophe-source
 
